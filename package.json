@@ -1,0 +1,22 @@
+{
+  "name": "bot_security",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.4.1",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "telegraf": "^4.14.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.4.1"
+  }
+}
