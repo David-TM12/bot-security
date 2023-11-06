@@ -7,3 +7,6 @@ yarn.lock
 
 # config vscode
 .vscode
+
+#docker and docker compose
+docker-compose.yml

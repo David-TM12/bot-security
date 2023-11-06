@@ -6,6 +6,6 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRESQL_USERNAME=bot_admin
-      - POSTGRESQL_PASSWORD=200954144bot
-      - POSTGRESQL_DATABASE=botsecurity
+      - POSTGRESQL_USERNAME=
+      - POSTGRESQL_PASSWORD=
+      - POSTGRESQL_DATABASE=
