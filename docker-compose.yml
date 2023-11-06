@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  bot-security-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=bot_admin
+      - POSTGRESQL_PASSWORD=200954144bot
+      - POSTGRESQL_DATABASE=botsecurity

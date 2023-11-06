@@ -9,3 +9,48 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id               String  @id @default(uuid())
+  nome             String?
+  username         String
+  uf               String?
+  cidade           String?
+  email            String?
+  hash_id_telegram String?
+
+  ocorrencias Ocorrencia[]
+
+  @@map("usuarios")
+}
+
+model Ocorrencia {
+  id        String   @id @default(uuid())
+  rua       String
+  cep       String
+  bairro    String
+  cidade    String
+  uf        String
+  descricao String
+  consumado Boolean
+  longitude Decimal?
+  latitude  Decimal?
+
+  usuario    Usuario @relation(fields: [usuario_id], references: [id])
+  usuario_id String
+
+  categoria    Categoria @relation(fields: [categoria_id], references: [id])
+  categoria_id String
+
+  @@map("ocorrencias")
+}
+
+model Categoria {
+  id        String @id @default(uuid())
+  nome      String
+  descricao String
+
+  ocorrencias Ocorrencia[]
+
+  @@map("categorias")
+}
