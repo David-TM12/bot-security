@@ -30,19 +30,11 @@ export const backButtonKeyBoard = Markup.keyboard([
   ['voltar']
 ]).resize().oneTime();
 
-// export const buttonsCategories = async (listCategories) => Markup.inlineKeyboard(
-//   listCategories.map(category => [Markup.button.callback(category.nome, `add ${category.id}`)])
-// );
-
 export const buttonsCategories = async (categoria) => {
   return  Markup.inlineKeyboard([
     Markup.button.callback(`${categoria.nome}`, `add ${categoria.id}`)
   ], { columns: 1 });
 };
-
-// export const buttonListOcorrenciasByCity = async (list) => Markup.inlineKeyboard(
-//   list.map(ocorrencia => [Markup.button.callback(`Cidade: ${ocorrencia.cidade} \nBairro: ${ocorrencia.bairro} \nRua: ${ocorrencia.rua}`, `add ${ocorrencia.id}`)])
-// );
 
 export const buttonListOcorrenciasByCity = async (ocorrencia) => {
   return Markup.inlineKeyboard(

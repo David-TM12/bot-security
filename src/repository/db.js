@@ -151,3 +151,39 @@ export async function getRuasPerigosasPorUF(uf) {
 		throw error;
 	}
 }
+
+export async function getOcorrrenciaByUsuario(id_telegram){
+	try {
+		const user = await getUserByIdTelegram(id_telegram);
+		if(!user){
+			throw new Error('Usuario não encontrado!!!')
+		}
+		const ocorrencia = prisma.ocorrencia.findMany({
+			where: {
+				usuario_id: user.id
+			}
+		});
+
+		return ocorrencia;
+	} catch (error) {
+		throw {
+			message: '⚠️ Houve um erro ao consultar as ocorrências para o seu usuário'
+		};
+	}
+}
+
+
+async function getUserByIdTelegram(id_telegram){
+	try{
+		const res = await prisma.usuario.findFirst({
+			where: {
+				hash_id_telegram: String(id_telegram)
+			}
+		});
+		return res;
+	}catch(error){
+		throw {
+			message: '⚠️ Houve um erro ao consultar o usuário!!!'
+		};
+	}
+}

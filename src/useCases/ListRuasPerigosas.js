@@ -1,5 +1,5 @@
-import { Scenes, Markup } from 'telegraf';
-import { backButton, buttonsMainMenu, filterButton, filterButtonInlineKeyBoard } from '../buttons.js';
+import { Scenes } from 'telegraf';
+import { backButton, buttonsMainMenu, filterButtonInlineKeyBoard } from '../buttons.js';
 import { getRuasPerigosasPorBairro, getRuasPerigosasPorCidade, getRuasPerigosasPorUF } from '../repository/db.js';
 
 let porEstado = false;
@@ -12,7 +12,6 @@ listRuasPerigosasScene.enter(async ctx => {
 });
 
 listRuasPerigosasScene.leave(async ctx => {
-	await ctx.reply('saindo');
 	await ctx.reply('🏃‍♂Retornando. . .');
 	await ctx.reply('Selecione uma opção', buttonsMainMenu);
 });
@@ -45,9 +44,9 @@ listRuasPerigosasScene.on('text', async ctx => {
 			let a = 1;
 			for (const ocorrencia of res) {
 				if (a < sizeRes) {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
+					await ctx.replyWithHTML(`<b><i>-RANK #${a}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
 				} else {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
+					await ctx.replyWithHTML(`<b><i>-RANK #${a}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
 				}
 				a++;
 			}
@@ -62,9 +61,9 @@ listRuasPerigosasScene.on('text', async ctx => {
 			let i = 1;
 			for (const ocorrencia of res) {
 				if (i < sizeRes) {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} <b>\nCidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
+					await ctx.replyWithHTML(`<b><i>-RANK #${i}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} <b>\nCidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
 				} else {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} <b>\nCidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
+					await ctx.replyWithHTML(`<b><i>-RANK #${i}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} <b>\nCidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
 				}
 				i++;
 			}
@@ -80,9 +79,9 @@ listRuasPerigosasScene.on('text', async ctx => {
 			let j = 1;
 			for (const ocorrencia of res) {
 				if (j < sizeRes) {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
+					await ctx.replyWithHTML(`<b><i>-RANK #${j}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`);
 				} else {
-					await ctx.replyWithHTML(`<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
+					await ctx.replyWithHTML(`<b><i>-RANK #${j}-</i></b> \n<b>UF:</b> ${ocorrencia.uf} \n<b>Cidade:</b> ${ocorrencia.cidade} \n<b>Bairro:</b> ${ocorrencia.bairro} \n<b>Rua:</b> ${ocorrencia.rua} \n<b>N° Ocorrências:</b> ${ocorrencia._count}`, backButton);
 				}
 				j++;
 			}
