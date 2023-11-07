@@ -40,6 +40,27 @@ export const buttonsCategories = async (categoria) => {
   ], { columns: 1 });
 };
 
+// export const buttonListOcorrenciasByCity = async (list) => Markup.inlineKeyboard(
+//   list.map(ocorrencia => [Markup.button.callback(`Cidade: ${ocorrencia.cidade} \nBairro: ${ocorrencia.bairro} \nRua: ${ocorrencia.rua}`, `add ${ocorrencia.id}`)])
+// );
+
+export const buttonListOcorrenciasByCity = async (ocorrencia) => {
+  return Markup.inlineKeyboard(
+    [Markup.button.callback(`Cidade: ${ocorrencia.cidade} \nBairro: ${ocorrencia.bairro} \nRua: ${ocorrencia.rua} \nN° Ocorrências: ${ocorrencia._count}`, `add ${ocorrencia.id}`)],{columns:1}
+  ).resize().oneTime();
+}
+
+export const filterButton = Markup.keyboard([
+  ['por estado'], ['por cidade'], ['por bairro']
+]).resize().oneTime();
+
+export const filterButtonInlineKeyBoard = Markup.inlineKeyboard([
+  Markup.button.callback('POR ESTADO', 'byState'),
+  Markup.button.callback('POR CIDADE', 'byCity'),
+  Markup.button.callback('POR BAIRRO', 'byDistrict'),
+  Markup.button.callback('🔙 - VOLTAR', 'voltar'),
+], { columns: 1 }).resize().oneTime();
+
 //======================================================================
 export const moduleButtons = Markup.inlineKeyboard([
   Markup.button.callback('📷 - CV', 'cv 1'),

@@ -23,7 +23,6 @@ let id_categoria = '';
 export const infoOcorrenciaScene = new Scenes.BaseScene('inserir_ocorrencia');
 infoOcorrenciaScene.enter(async ctx => {
     const id_user_telegram = ctx.update.callback_query.from.id;
-    console.log('aaa - ',ctx.update.callback_query.from.id);
     const usuario = await findByUser(id_user_telegram);
     if (usuario) {
         id_usuario = usuario.id;

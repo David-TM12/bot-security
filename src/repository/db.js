@@ -68,14 +68,84 @@ export async function getCategorias() {
 	}
 }
 
-export async function getRuasPerigosas(cidade) {
+export async function getRuasPerigosasPorCidade(cidade) {
 	try {
-		const res = await prisma.ocorrencia.findMany({
+		const res = await prisma.ocorrencia.groupBy({
+			by: ['uf','cidade','bairro','rua'],
 			where: {
-				cidade: cidade
-			}
-		})
+				cidade: cidade 
+			},
+			select: {
+				uf: true,
+				cidade: true,
+				bairro: true,
+				rua: true,
+			},
+			_count: true,
+			orderBy: {
+				_count: {
+					rua: 'desc'
+				}
+			},
+			take: 10
+		});
+		return res;
+	} catch (error) {
+		throw error;
+	}
+}
 
+export async function getRuasPerigosasPorBairro(bairro) {
+
+	try {
+		const res = await prisma.ocorrencia.groupBy({
+			by: ['uf','cidade','bairro','rua'],
+			where: {
+				bairro: bairro
+			},
+			select: {
+				uf: true,
+				cidade: true,
+				bairro: true,
+				rua: true,
+			},
+			_count: true,
+			orderBy: {
+				_count: {
+					rua: 'desc'
+				}
+			},
+			take: 10
+		});
+		return res;
+	} catch (error) {
+		throw error;
+	}
+}
+
+
+export async function getRuasPerigosasPorUF(uf) {
+	
+	try {
+		const res = await prisma.ocorrencia.groupBy({
+			by: ['uf','cidade','bairro','rua'],
+			where: {
+				uf: uf.toUpperCase()
+			},
+			select: {
+				uf: true,
+				cidade: true,
+				bairro: true,
+				rua: true,
+			},
+			_count: true,
+			orderBy: {
+				_count: {
+					rua: 'desc'
+				}
+			},
+			take: 10
+		});
 		return res;
 	} catch (error) {
 		throw error;
